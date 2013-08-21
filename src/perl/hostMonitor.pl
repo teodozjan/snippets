@@ -13,12 +13,13 @@ do{
         }while (sleep(600));                                                                                                                                                                  
                                                                                                                                                                                               
 sub go{                                                                                                                                                                                       
-         for(my $i=0;$i<200;$i++){                                                                                                                                                            
+         for(101 .. 254){                                                                                                                                                                     
                 print ".";                                                                                                                                                                    
                 sleep(1);                                                                                                                                                                     
                 my $p = Net::Ping->new();                                                                                                                                                     
-                say scalar localtime(),"\n\t$i is alive.\n" if $p->ping($HOST.$i);                                                                                                            
+                say "\n\t",scalar localtime()," $_ is alive.\n" if $p->ping($HOST.$_);                                                                                                        
                 $p->close();                                                                                                                                                                  
     }                                                                                                                                                                                         
- 
-      
+
+                                                                                                                                                                                              
+}                     
