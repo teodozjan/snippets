@@ -1,0 +1,3 @@
+=head1 Code snippets
+
+This is set of my personal snippets. I created repository instead of gists because it easier to organize them.
