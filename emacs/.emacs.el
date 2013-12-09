@@ -6,4 +6,4 @@
 (global-hl-line-mode 1)
 (setq c-auto-newline 1)
 (setq cperl-auto-newline t)
-(load-theme 'wombat t)
+(load-theme 'tango t)
