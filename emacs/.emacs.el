@@ -1,6 +1,6 @@
 (defalias 'perl-mode 'cperl-mode)
 (column-number-mode t)
-(cua-mode 1)
+;(cua-mode 1)
 (show-paren-mode t)
 ;(desktop-save-mode 1)
 (global-hl-line-mode 1)
