@@ -1,4 +1,4 @@
 =head1 Perl
 
-This is set for perl related gists
+This is set of perl related gists
 
