@@ -7,7 +7,7 @@ const char* toConstChar(std::string strg)
 // Tracex howto
 void printTracex()
 {
-TRACEX_MESSAGE("NBSTR: %ls, stdString: %s",         
+TRACEX_MESSAGE("BSTR: %ls, stdString: %s",         
          bstrSting,
          strg.c_str();
 }
