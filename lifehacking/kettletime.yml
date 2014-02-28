@@ -2,9 +2,13 @@
 project:    Kettle time
 started:    1393416537
 measurements:
-    - amount:    1500
+    - timestamp: 1393416537
+      amount:    1500
       time:      320
-      timestamp: 1393416537
-    - amount     110
+    - timestamp: 1393431317
+      amount     110
       time:      226
-      timestamp: 1393431317 
+    - timestamp: 1393589619
+      amount:    1500
+      time:      305
+      
