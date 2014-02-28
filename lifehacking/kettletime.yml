@@ -6,7 +6,7 @@ measurements:
       amount:    1500
       time:      320
     - timestamp: 1393431317
-      amount     110
+      amount     1100
       time:      226
     - timestamp: 1393589619
       amount:    1500
