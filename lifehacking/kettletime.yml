@@ -11,4 +11,7 @@ measurements:
     - timestamp: 1393589619
       amount:    1500
       time:      305
+    - timestamp: 1394012766
+      amount:    1000
+      time:      210
       
