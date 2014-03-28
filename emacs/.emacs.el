@@ -9,3 +9,4 @@
 (load-theme 'tango t)
 
 (add-hook 'text-mode-hook (lambda () (setq truncate-lines t)))
+(set-face-foreground 'font-lock-comment-face "slate gray")
