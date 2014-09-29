@@ -12,4 +12,4 @@
 (add-to-list 'load-path "C:/noinst/emacs-el")
 (require 'pod-mode)
 (add-to-list 'auto-mode-alist '("\\.pod$" . pod-mode))
-
+(add-to-list 'auto-mode-alist '("\\.t$" . pod-mode))
