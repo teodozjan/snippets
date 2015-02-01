@@ -65,13 +65,13 @@ class Mortage {
     }
 
     method gist {
-        return join "\n", $.bank,
+        return join " PLN\n", $.bank,
         "Rata " ~ $.mortage.round(0.01),
         "Kapital(kontrolnie): " ~ $.to_pay.round(0.01),
         "Koszty odsetki: " ~ $.total_interest.round(0.01),
         "Koszty inne: " ~ $.total_cost.round(0.01),
-        "Razem: " ~ ($.total_cost+$.total_interest).round(0.01),
-        "\n";
+        "Razem: " ~ ($.total_cost+$.total_interest).round(0.01);
+        # if correctly calculated $.to_pay should be close to 0
     }
 
     method calc_mortage {
