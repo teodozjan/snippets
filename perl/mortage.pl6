@@ -100,7 +100,7 @@ $pko.add(AnnualCostConst.new(from=>1, to=>360, value=>FatRat.new(7,1)));
 # Pseudo polisa
 $pko.add(AnnualCostConst.new(from=>1, to=>1, value=> FatRat.new(325,$more_than_promile)*$pko.to_pay));
 #Podwyzszenie marzy
-$pko.add(AnnualCostPercentage.new(from=>1, to=>64, interest => FatRat.new(25,$more_than_percent)));
+$pko.add(AnnualCostMort.new(from=>1, to=>64, interest => FatRat.new(25,$more_than_percent)));
 #Wycena
 $pko.add(AnnualCostConst.new(from=>1, to=>1, value=>400));
 
@@ -108,13 +108,13 @@ my $mbank = Mortage.new(bank=>"MBANK",interest => FatRat.new(366,$more_than_perc
 # Pseudo polisa
 $mbank.add(AnnualCostConst.new(from=>1, to=>1, value=>$mbank.to_pay* FatRat.new(164,$more_than_promile)));
 # Prowizja
-$mbank.add(AnnualCostConst.new(from=>1, to=>1, value=>$mbank.to_pay*FatRat.new(1,100)));
+$mbank.add(AnnualCostConst.new(from=>1, to=>1, value=>$mbank.to_pay * FatRat.new(1,100)));
 # Psuedo ubezp
 $mbank.add(AnnualCostMort.new(from=>25, to=>60, interest => FatRat.new(4,100)));
 
-my $db = Mortage.new(bank=>"DB",interest => FatRat.new(379,$more_than_percent), mortage=>FatRat.new(138686,100));
-$db.add(AnnualCostConst.new(from=>1, to=>1, value=>$db.to_pay*FatRat.new(108,$more_than_promile)*FatRat.new(4,10)));
-$db.add(AnnualCostConst.new(from=>13, to=>60, value=>FatRat.new(268,1)*FatRat.new(4,10)));
+my $db = Mortage.new(bank=>"DB",interest => FatRat.new(379,$more_than_percent), mortage=>FatRat.new(138220,100));
+$db.add(AnnualCostConst.new(from=>1, to=>1, value=>$db.to_pay * FatRat.new(108,$more_than_promile)*FatRat.new(3,10)));
+$db.add(AnnualCostConst.new(from=>13, to=>60, value=>FatRat.new(268,1)*FatRat.new(3,10)));
 $db.add(AnnualCostPercentage.new(from=>25, to=>66, interest => FatRat.new(2,$more_than_percent)));
 $db.add(AnnualCostConst.new(from=>1, to=>360, value=>24));
 $db.add(AnnualCostConst.new(from=>1, to=>1, value=>300));
