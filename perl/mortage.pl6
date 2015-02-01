@@ -97,7 +97,7 @@ class Mortage {
 say "Init";
 my $pko = Mortage.new(bank=>"PKO", interest => FatRat.new(353,$more_than_percent), mortage=>FatRat.new(133864,100));
 # Oplata za konto
-$pko.add(AnnualCostConst.new(from=>1, to=>360, value=>FatRat.new(7,1)));
+$pko.add(AnnualCostConst.new(from=>1, to=>360, value=>FatRat.new(7*5,3)));
 # Pseudo polisa
 $pko.add(AnnualCostConst.new(from=>1, to=>1, value=> FatRat.new(325,$more_than_promile)*$pko.to_pay));
 #Podwyzszenie marzy
