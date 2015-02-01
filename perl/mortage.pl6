@@ -57,7 +57,8 @@ class Mortage {
             $!total_interest += $intests;
             $!to_pay +=  $intests;
             
-            $!total_interest *= 1-FatRat.new(200,$more_than_percent);
+            # Uncomment if want infltation
+            #$!total_interest *= 1-FatRat.new(200,$more_than_percent);
             
             
         }
