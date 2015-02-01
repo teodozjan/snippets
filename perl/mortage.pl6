@@ -41,16 +41,16 @@ class Mortage {
         for 1 .. $!mortage -> $mort {            
            
             for @!costs -> $cost {
-                #say $mort;
                 if $mort >= $cost.from && $mort <= $cost.to {
                     $!total_cost += $cost.get($.to_pay, $.mortage).Rat; 
                 }                
             }
            
             my Rat $intests =  ($!interest*Rat.new(1,1200)*$!to_pay).Rat;
+            
             $!to_pay -= $.mortage;
-            $!total_interest += $intests;
-            $!to_pay += $intests;
+            $!total_interest = $!total_interest+$intests.Rat;
+            $!to_pay = $!to_pay = $intests.Rat;
             
             #$!total_interest = Rat.new(98/100)*$!total_interest;
             
