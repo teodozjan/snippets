@@ -57,7 +57,7 @@ class Mortage {
             $!total_interest += $intests;
             $!to_pay +=  $intests;
             
-            #$!total_interest = FatRat.new(98/Rpercent)*$!total_interest;
+            $!total_interest *= 1-FatRat.new(200,$more_than_percent);
             
             
         }
