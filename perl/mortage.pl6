@@ -2,6 +2,7 @@ use v6;
 
 constant $more_than_percent = 120000;
 constant $more_than_promile = 10000;
+
 class AnnualCost{
     has Int $.from;
     has Int $.to;
@@ -56,7 +57,7 @@ class Mortage {
             $!total_interest += $intests;
             $!to_pay +=  $intests;
             
-            #$!total_interest = FatRat.new(98/100)*$!total_interest;
+            #$!total_interest = FatRat.new(98/Rpercent)*$!total_interest;
             
             
         }
@@ -93,7 +94,7 @@ class Mortage {
 }
 
 say "Init";
-my $pko = Mortage.new(bank=>"PKO", interest => FatRat.new(353,$more_than_percent), mortage=>FatRat.new(134313,100));
+my $pko = Mortage.new(bank=>"PKO", interest => FatRat.new(353,$more_than_percent), mortage=>FatRat.new(134315,100));
 # Oplata za konto
 $pko.add(AnnualCostConst.new(from=>1, to=>360, value=>FatRat.new(7,1)));
 # Pseudo polisa
@@ -111,21 +112,24 @@ $mbank.add(AnnualCostConst.new(from=>1, to=>1, value=>$mbank.to_pay*FatRat.new(1
 # Psuedo ubezp
 $mbank.add(AnnualCostMort.new(from=>25, to=>60, interest => FatRat.new(4,100)));
 
-my $db = Mortage.new(bank=>"DB",interest => FatRat.new(379,$more_than_percent), mortage=>FatRat.new(138685,100));
+my $db = Mortage.new(bank=>"DB",interest => FatRat.new(379,$more_than_percent), mortage=>FatRat.new(138686,100));
 $db.add(AnnualCostConst.new(from=>1, to=>1, value=>$db.to_pay*FatRat.new(108,$more_than_promile)*FatRat.new(4,10)));
 $db.add(AnnualCostConst.new(from=>13, to=>60, value=>FatRat.new(268,1)*FatRat.new(4,10)));
 $db.add(AnnualCostPercentage.new(from=>25, to=>66, interest => FatRat.new(2,$more_than_percent)));
 $db.add(AnnualCostConst.new(from=>1, to=>360, value=>24));
 $db.add(AnnualCostConst.new(from=>1, to=>1, value=>300));
 
+say $pko.calc_mortage.round(0.01);
+say $mbank.calc_mortage.round(0.01);
+say $db.calc_mortage.round(0.01);
+
 
 $pko.calc;
-
 $mbank.calc;
-
 $db.calc;
 
 say "Done";
 say $pko;
 say $mbank;
 say $db;
+
