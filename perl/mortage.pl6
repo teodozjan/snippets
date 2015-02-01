@@ -62,11 +62,11 @@ class Mortage {
 
     method gist {
         return join "\n", $.bank,
-        "Rata " ~ $.mortage,
-        "Kapital(Int): " ~ $.to_pay.round(0.01),
-        "Koszty odsetki(Int): " ~ $.total_interest.Int,
-        "Koszty inne: " ~ $.total_cost.Int,
-        "Razem(tys): " ~ (($.total_cost+$.total_interest)/100).Int,
+        "Rata " ~ $.mortage.round(0.01),
+        "Kapital: " ~ $.to_pay.round(0.01),
+        "Koszty odsetki: " ~ $.total_interest.round(0.01),
+        "Koszty inne: " ~ $.total_cost.round(0.01),
+        "Razem): " ~ ($.total_cost+$.total_interest).round(0.01),
         "\n";
     }
 
@@ -92,40 +92,40 @@ class Mortage {
 
 say "Init";
 my $pko = Mortage.new(bank=>"PKO", interest => FatRat.new(353,120000), mortage=>FatRat.new(134313,100));
-#$pko.add(AnnualCostConst.new(from=>1, to=>360, value=>Rat.new(7,1)));
-#$pko.add(AnnualCostConst.new(from=>1, to=>1, value=>$pko.to_pay/100*3.25));
-#$pko.add(AnnualCostPercentage.new(from=>1, to=>64, interest => Rat.new(25,100)));
-#$pko.add(AnnualCostConst.new(from=>1, to=>1, value=>400));
+$pko.add(AnnualCostConst.new(from=>1, to=>360, value=>Rat.new(7,1)));
+$pko.add(AnnualCostConst.new(from=>1, to=>1, value=>$pko.to_pay/100*3.25));
+$pko.add(AnnualCostPercentage.new(from=>1, to=>64, interest => Rat.new(25,100)));
+$pko.add(AnnualCostConst.new(from=>1, to=>1, value=>400));
 
-#my $mbank = Mortage.new(bank=>"MBANK",interest => Rat.new(366,100), mortage=>Rat.new(136491,100));
-#$mbank.add(AnnualCostConst.new(from=>1, to=>1, value=>$mbank.to_pay/100*1.64));
-#$mbank.add(AnnualCostConst.new(from=>1, to=>1, value=>$mbank.to_pay/100*1));
-#$mbank.add(AnnualCostMort.new(from=>25, to=>60, interest => Rat.new(4,1)));
+my $mbank = Mortage.new(bank=>"MBANK",interest => FatRat.new(366,120000), mortage=>FatRat.new(136491,100));
+$mbank.add(AnnualCostConst.new(from=>1, to=>1, value=>$mbank.to_pay/100*1.64));
+$mbank.add(AnnualCostConst.new(from=>1, to=>1, value=>$mbank.to_pay/100*1));
+$mbank.add(AnnualCostMort.new(from=>25, to=>60, interest => Rat.new(4,1)));
 
-#my $mbank2 = Mortage.new(bank=>"MBANK2",interest => Rat.new(366,100), mortage=>Rat.new(135575,100));
-#$mbank2.cash(2000);
-#$mbank2.add(AnnualCostConst.new(from=>1, to=>1, value=>$mbank2.to_pay/100*1.64));
-#$mbank2.add(AnnualCostConst.new(from=>1, to=>1, value=>$mbank2.to_pay/100*1));
-#$mbank2.add(AnnualCostMort.new(from=>25, to=>59, interest => Rat.new(4,1)));
+my $mbank2 = Mortage.new(bank=>"MBANK2",interest => FatRat.new(366,120000), mortage=>FatRat.new(135575,100));
+$mbank2.cash(2000);
+$mbank2.add(AnnualCostConst.new(from=>1, to=>1, value=>$mbank2.to_pay/100*1.64));
+$mbank2.add(AnnualCostConst.new(from=>1, to=>1, value=>$mbank2.to_pay/100*1));
+$mbank2.add(AnnualCostMort.new(from=>25, to=>59, interest => Rat.new(4,1)));
 
-#my $db = Mortage.new(bank=>"DB",interest => Rat.new(379,100), mortage=>Rat.new(138685,100));
-#$db.add(AnnualCostConst.new(from=>1, to=>1, value=>$db.to_pay/100*1.08*0.4));
-#$db.add(AnnualCostConst.new(from=>13, to=>60, value=>268*0.4));
-#$db.add(AnnualCostPercentage.new(from=>25, to=>66, interest => Rat.new(2,10)));
-#$db.add(AnnualCostConst.new(from=>1, to=>360, value=>24));
-#$db.add(AnnualCostConst.new(from=>1, to=>1, value=>300));
+my $db = Mortage.new(bank=>"DB",interest => FatRat.new(379,120000), mortage=>FatRat.new(138685,100));
+$db.add(AnnualCostConst.new(from=>1, to=>1, value=>$db.to_pay/100*1.08*0.4));
+$db.add(AnnualCostConst.new(from=>13, to=>60, value=>268*0.4));
+$db.add(AnnualCostPercentage.new(from=>25, to=>66, interest => Rat.new(2,10)));
+$db.add(AnnualCostConst.new(from=>1, to=>360, value=>24));
+$db.add(AnnualCostConst.new(from=>1, to=>1, value=>300));
 
 say "1";
 $pko.calc;
-#say "2";
-#$mbank2.calc;
-#say "3";
-#$mbank.calc;
-#say "4";
-#$db.calc;
+say "2";
+$mbank2.calc;
+say "3";
+$mbank.calc;
+say "4";
+$db.calc;
 
 say "Done";
 say $pko;
-#say $mbank;
-#say $mbank2;
-#say $db;
+say $mbank;
+say $mbank2;
+say $db;
