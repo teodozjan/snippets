@@ -32,7 +32,7 @@ class AnnualCostConst is AnnualCost {
     
 class Mortage {
     has Str $.bank;
-    has $.to_pay = FatRat.new(298000,1);
+    has $.to_pay = FatRat.new(297000,1);
     has $.interest;
     has Int $.mortages = 360;
     has $.mortage;
@@ -94,7 +94,7 @@ class Mortage {
 }
 
 say "Init";
-my $pko = Mortage.new(bank=>"PKO", interest => FatRat.new(353,$more_than_percent), mortage=>FatRat.new(134315,100));
+my $pko = Mortage.new(bank=>"PKO", interest => FatRat.new(353,$more_than_percent), mortage=>FatRat.new(133864,100));
 # Oplata za konto
 $pko.add(AnnualCostConst.new(from=>1, to=>360, value=>FatRat.new(7,1)));
 # Pseudo polisa
@@ -104,7 +104,7 @@ $pko.add(AnnualCostPercentage.new(from=>1, to=>64, interest => FatRat.new(25,$mo
 #Wycena
 $pko.add(AnnualCostConst.new(from=>1, to=>1, value=>400));
 
-my $mbank = Mortage.new(bank=>"MBANK",interest => FatRat.new(366,$more_than_percent), mortage=>FatRat.new(136491,100));
+my $mbank = Mortage.new(bank=>"MBANK",interest => FatRat.new(366,$more_than_percent), mortage=>FatRat.new(136033,100));
 # Pseudo polisa
 $mbank.add(AnnualCostConst.new(from=>1, to=>1, value=>$mbank.to_pay* FatRat.new(164,$more_than_promile)));
 # Prowizja
