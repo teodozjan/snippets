@@ -115,11 +115,11 @@ $mbank.add(AnnualCostMort.new(from=>25, to=>60, interest => FatRat.new(4,100)));
 
 # FIXME: Niedokladne nie uwzglednia zyskow z funduszy ani oplaty za prowadzenie ,,portfela'' 
 my $db = Mortage.new(bank=>"DB",interest => FatRat.new(379,$more_than_percent), mortage=>FatRat.new(138220,100));
-$db.add(AnnualCostConst.new(from=>1, to=>1, value=>$db.to_pay * FatRat.new(108,$more_than_promile)*FatRat.new(3,10)));
-$db.add(AnnualCostConst.new(from=>13, to=>60, value=>FatRat.new(268,1)*FatRat.new(3,10)));
+#$db.add(AnnualCostConst.new(from=>1, to=>1, value=>$db.to_pay * FatRat.new(108,$more_than_promile)*FatRat.new(3,10)));
+#$db.add(AnnualCostConst.new(from=>13, to=>60, value=>FatRat.new(268,1)*FatRat.new(3,10)));
+$db.add(AnnualCostPercentage.new(from=>1, to=>12, interest=>FatRat.new(-59,$more_than_percent)));
 $db.add(AnnualCostPercentage.new(from=>25, to=>66, interest => FatRat.new(2,$more_than_percent)));
 $db.add(AnnualCostConst.new(from=>1, to=>360, value=>24));
-$db.add(AnnualCostConst.new(from=>1, to=>1, value=>300));
 
 say $pko.calc_mortage.round(0.01);
 say $mbank.calc_mortage.round(0.01);
