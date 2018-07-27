@@ -1,4 +1,3 @@
-
 ;; Added by Package.el.  This must come before configurations of
 ;; installed packages.  Don't delete this line.  If you don't want it,
 ;; just comment it out by adding a semicolon to the start of the line.
@@ -38,15 +37,17 @@
 
 (eval-when-compile
   (require 'use-package))
-  (require 'diminish)
-  (require 'bind-key)
+
 
 
 ;; Install additinal themes from melpa
 ;; make sure to use :defer keyword
 (use-package hemera-theme :ensure :defer)
 (use-package nyx-theme :ensure :defer)
-
+(use-package circadian :ensure :defer)
+(use-package perl6-mode
+  :ensure t
+  :defer t)
 
 (use-package circadian
   :ensure t
@@ -64,7 +65,8 @@
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
    (quote
-    ("2e1e2657303116350fe764484e8300ca2e4cf45a73cdbd879bc0ca29cb337147" "3c06231f8aa4ad2ebc07d70ade7a1d310cc2adab02251c77a1882787e30f8394" default))))
+    ("2e1e2657303116350fe764484e8300ca2e4cf45a73cdbd879bc0ca29cb337147" "3c06231f8aa4ad2ebc07d70ade7a1d310cc2adab02251c77a1882787e30f8394" default)))
+ '(package-selected-packages (quote (circadian nyx-theme hemera-theme use-package))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
