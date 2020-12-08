@@ -29,7 +29,6 @@
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
 (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
 (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/"))
-(package-initialize)
 
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
@@ -57,6 +56,9 @@
   (setq circadian-themes '((:sunrise . hemera)
                            (:sunset  . nyx)))
   (circadian-setup))
+
+(desktop-save-mode 1)
+(persistent-scratch-setup-default)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
