@@ -6,6 +6,7 @@
 
 (set-language-environment "UTF-8")
 (set-default-coding-systems 'utf-8)
+;;(setenv "TZ" "Europe/Warsaw")
 
 
 (column-number-mode t)
@@ -23,12 +24,12 @@
       `((".*" ,temporary-file-directory t)))
 
 
-
 (require 'package)
 (setq package-enable-at-startup nil)
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
-(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
+;;(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
 (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/"))
+;(package-initialize)
 
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
@@ -42,6 +43,31 @@
 ;; Install additinal themes from melpa
 ;; make sure to use :defer keyword
 (use-package hemera-theme :ensure :defer)
+(use-package logview :ensure :defer
+  :init
+  (add-hook #'log4j-mode-hook #'view-mode)
+  (add-hook #'log4j-mode-hook #'read-only-mode)
+  (add-hook #'log4j-mode-hook 'eos/turn-on-hl-line))
+
+(setq-default logview-additional-submodes
+              '(("NoClassnameLog4j"
+                 (format . "TIMESTAMP [THREAD] LEVEL -")
+                 (levels . "SLF4J")
+                 (timestamp)
+                 (aliases))))
+              
+
+;;(logview-additional-submodes
+;;  '(("ADVALog4j"
+;;    (format . "TIMESTAMP [THREAD] LEVEL -")
+;;     (levels . "SLF4J")
+;;     (timestamp)
+;;     (aliases))))
+;;(logview-auto-revert-mode 'auto-revert-tail-mode)
+;;(package-selected-packages '(circadian nyx-theme hemera-theme use-package)))
+
+
+(use-package vlf :ensure :defer)
 (use-package nyx-theme :ensure :defer)
 (use-package circadian :ensure :defer)
 (use-package perl6-mode
@@ -57,21 +83,9 @@
                            (:sunset  . nyx)))
   (circadian-setup))
 
-(desktop-save-mode 1)
-(persistent-scratch-setup-default)
+(require 'server)
+(unless (server-running-p)
+  (server-start)) 
 
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(custom-safe-themes
-   (quote
-    ("2e1e2657303116350fe764484e8300ca2e4cf45a73cdbd879bc0ca29cb337147" "3c06231f8aa4ad2ebc07d70ade7a1d310cc2adab02251c77a1882787e30f8394" default)))
- '(package-selected-packages (quote (circadian nyx-theme hemera-theme use-package))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+(desktop-save-mode 1)
+
