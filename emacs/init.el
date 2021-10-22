@@ -6,8 +6,6 @@
 
 (set-language-environment "UTF-8")
 (set-default-coding-systems 'utf-8)
-;;(setenv "TZ" "Europe/Warsaw")
-
 
 (column-number-mode t)
 (show-paren-mode t)
@@ -29,7 +27,7 @@
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
 ;;(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
 (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/"))
-
+;(package-initialize)
 
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
@@ -39,10 +37,9 @@
   (require 'use-package))
 
 
-
 ;; Install additinal themes from melpa
 ;; make sure to use :defer keyword
-(use-package hemera-theme :ensure :defer)
+;(use-package hemera-theme :ensure :defer)
 (use-package logview :ensure :defer
   :init
   (add-hook #'log4j-mode-hook #'view-mode)
@@ -50,25 +47,15 @@
   (add-hook #'log4j-mode-hook 'eos/turn-on-hl-line))
 
 (setq-default logview-additional-submodes
-              '(("NoClassnameLog4j"
+              '(("ADVALog4j"
                  (format . "TIMESTAMP [THREAD] LEVEL -")
                  (levels . "SLF4J")
                  (timestamp)
                  (aliases))))
               
 
-;;(logview-additional-submodes
-;;  '(("ADVALog4j"
-;;    (format . "TIMESTAMP [THREAD] LEVEL -")
-;;     (levels . "SLF4J")
-;;     (timestamp)
-;;     (aliases))))
-;;(logview-auto-revert-mode 'auto-revert-tail-mode)
-;;(package-selected-packages '(circadian nyx-theme hemera-theme use-package)))
-
-
 (use-package vlf :ensure :defer)
-(use-package nyx-theme :ensure :defer)
+;(use-package monokai-pro-theme :ensure :defer)
 (use-package circadian :ensure :defer)
 (use-package perl6-mode
   :ensure t
@@ -82,10 +69,49 @@
   (setq circadian-themes '((:sunrise . hemera)
                            (:sunset  . nyx)))
   (circadian-setup))
+;;(load-theme 'monokai-pro t)
 
 (require 'server)
 (unless (server-running-p)
   (server-start)) 
 
-(desktop-save-mode 1)
+(use-package dired-sidebar
+  :ensure t
+  :commands (dired-sidebar-toggle-sidebar))
 
+(use-package dired-sidebar
+  :bind (("C-x C-n" . dired-sidebar-toggle-sidebar))
+  :ensure t
+  :commands (dired-sidebar-toggle-sidebar)
+  :init
+  (add-hook 'dired-sidebar-mode-hook
+            (lambda ()
+              (unless (file-remote-p default-directory)
+                (auto-revert-mode))))
+  :config
+  (push 'toggle-window-split dired-sidebar-toggle-hidden-commands)
+  (push 'rotate-windows dired-sidebar-toggle-hidden-commands)
+
+  (setq dired-sidebar-subtree-line-prefix "__")
+  (setq dired-sidebar-theme 'vscode)
+  (setq dired-sidebar-use-term-integration t)
+  (setq dired-sidebar-use-custom-font t))
+
+(recentf-mode 1)
+(setq recentf-max-menu-items 25)
+(setq recentf-max-saved-items 25)
+(global-set-key "\C-x\ \C-r" 'recentf-open-files)
+
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   '(dired-sidebar vlf use-package persistent-scratch perl6-mode nyx-theme monokai-pro-theme logview hemera-theme circadian)))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
