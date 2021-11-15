@@ -36,10 +36,8 @@
 (eval-when-compile
   (require 'use-package))
 
+(use-package csv-mode :ensure :defer)
 
-;; Install additinal themes from melpa
-;; make sure to use :defer keyword
-;(use-package hemera-theme :ensure :defer)
 (use-package logview :ensure :defer
   :init
   (add-hook #'log4j-mode-hook #'view-mode)
@@ -55,8 +53,11 @@
               
 
 (use-package vlf :ensure :defer)
-;(use-package monokai-pro-theme :ensure :defer)
+
 (use-package circadian :ensure :defer)
+(use-package cloud-theme :ensure :defer)
+(use-package nyx-theme :ensure :defer)
+
 (use-package perl6-mode
   :ensure t
   :defer t)
@@ -66,7 +67,7 @@
   :config
   (setq calendar-latitude 54.5)
   (setq calendar-longitude 18.5)
-  (setq circadian-themes '((:sunrise . hemera)
+  (setq circadian-themes '((:sunrise . cloud)
                            (:sunset  . nyx)))
   (circadian-setup))
 ;;(load-theme 'monokai-pro t)
