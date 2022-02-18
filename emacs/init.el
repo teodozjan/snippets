@@ -58,6 +58,16 @@
 (use-package cloud-theme :ensure :defer)
 (use-package nyx-theme :ensure :defer)
 
+(use-package dashboard
+    :ensure t
+    :diminish dashboard-mode
+    :config
+    (setq dashboard-banner-logo-title "C-xC-r recentf-open-file|C-x C-n dired-sidebar ")
+    ;;(setq dashboard-startup-banner "/path/to/image")
+    (setq dashboard-items '((recents  . 10)
+                            (bookmarks . 10)))
+    (dashboard-setup-startup-hook))
+
 (use-package raku-mode
   :ensure t
   :defer t)
