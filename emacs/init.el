@@ -58,16 +58,6 @@
 (use-package cloud-theme :ensure :defer)
 (use-package nyx-theme :ensure :defer)
 
-(use-package dashboard
-    :ensure t
-    :diminish dashboard-mode
-    :config
-    (setq dashboard-banner-logo-title "C-xC-r recentf-open-file|C-x C-n dired-sidebar ")
-    ;;(setq dashboard-startup-banner "/path/to/image")
-    (setq dashboard-items '((recents  . 10)
-                            (bookmarks . 10)))
-    (dashboard-setup-startup-hook))
-
 (use-package raku-mode
   :ensure t
   :defer t)
@@ -112,6 +102,17 @@
 (setq recentf-max-menu-items 25)
 (setq recentf-max-saved-items 25)
 (global-set-key "\C-x\ \C-r" 'recentf-open-files)
+
+(use-package dashboard
+    :ensure t
+    :diminish dashboard-mode
+    :config
+    (setq dashboard-banner-logo-title "C-xC-r recentf-open-file|C-x C-n dired-sidebar ")
+    ;;(setq dashboard-startup-banner "/path/to/image")
+    (setq dashboard-items '((recents  . 10)
+                            (bookmarks . 10)))
+    (dashboard-setup-startup-hook))
+
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
