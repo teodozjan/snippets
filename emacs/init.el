@@ -53,7 +53,7 @@
               
 
 (use-package vlf :ensure :defer)
-
+(use-package yaml-mode :ensure :defer)
 (use-package circadian :ensure :defer)
 (use-package cloud-theme :ensure :defer)
 (use-package nyx-theme :ensure :defer)
