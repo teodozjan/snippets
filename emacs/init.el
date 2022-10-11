@@ -54,24 +54,28 @@
 
 (use-package vlf :ensure :defer)
 (use-package yaml-mode :ensure :defer)
-(use-package circadian :ensure :defer)
-(use-package cloud-theme :ensure :defer)
+;(use-package circadian :ensure :defer)
+;(use-package cloud-theme :ensure :defer)
+(use-package monokai-pro-theme :ensure :defer)
 (use-package nyx-theme :ensure :defer)
 
 (use-package raku-mode
   :ensure t
   :defer t)
-
-(use-package circadian
-  :ensure t
-  :config
-  (setq calendar-latitude 54.5)
-  (setq calendar-longitude 18.5)
-  (setq circadian-themes '((:sunrise . cloud)
-                           (:sunset  . nyx)))
-  (circadian-setup))
-;;(load-theme 'monokai-pro t)
-
+ 
+;(use-package circadian
+;  :ensure t
+;  :config
+;  (setq calendar-latitude 54.5)
+;  (setq calendar-longitude 18.5)
+;  (setq circadian-themes '((:sunrise . spacemacs)
+;                           (:sunset  . nyx)))
+;  (circadian-setup))
+(load-theme 'monokai-pro t)
+;(when (display-graphic-p)
+;  (invert-face 'default)
+;)
+;(set-variable 'frame-background-mode 'dark)
 (require 'server)
 (unless (server-running-p)
   (server-start)) 
