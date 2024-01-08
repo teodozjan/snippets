@@ -33,6 +33,13 @@
   (package-refresh-contents)
   (package-install 'use-package))
 
+(use-package markdown-mode
+  :ensure t
+  :mode ("README\\.md\\'" . gfm-mode)
+  :init (setq markdown-command "multimarkdown"))
+
+
+
 (eval-when-compile
   (require 'use-package))
 
@@ -56,8 +63,9 @@
 (use-package yaml-mode :ensure :defer)
 ;(use-package circadian :ensure :defer)
 ;(use-package cloud-theme :ensure :defer)
-(use-package monokai-pro-theme :ensure :defer)
+;(use-package monokai-pro-theme :ensure :defer)
 (use-package nyx-theme :ensure :defer)
+;(use-package nord-theme :ensure :defer)
 
 (use-package raku-mode
   :ensure t
@@ -71,7 +79,7 @@
 ;  (setq circadian-themes '((:sunrise . spacemacs)
 ;                           (:sunset  . nyx)))
 ;  (circadian-setup))
-(load-theme 'monokai-pro t)
+(load-theme 'nyx t)
 ;(when (display-graphic-p)
 ;  (invert-face 'default)
 ;)
